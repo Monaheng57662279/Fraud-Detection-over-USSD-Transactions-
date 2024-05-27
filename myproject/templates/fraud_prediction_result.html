@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Home | Fraud Detection System
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fraud Prediction Result</title>
+    <style>
+        /* Center the prediction result vertically and horizontally */
+        .prediction-result-container {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .prediction-result {
+            font-size: 24px; /* Adjust the font size as needed */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="prediction-result-container">
+        {% if prediction == 'Fraudulent' %}
+            <p class="prediction-result">The transaction is fraudulent!</p>
+        {% else %}
+            <p class="prediction-result">The transaction is legitimate!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %}

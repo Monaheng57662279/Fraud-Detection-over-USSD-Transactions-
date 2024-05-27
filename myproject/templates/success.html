@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+</head>
+<body>
+    <h1>Transaction Created Successfully</h1>
+    <p>Transaction ID: {{ transaction.id }}</p>
+    <p>Contact Number: {{ transaction.contact_num }}</p>
+    <p>Merchant: {{ transaction.merchant }}</p>
+    <p>Category: {{ transaction.category }}</p>
+    <p>Amount: {{ transaction.amt }}</p>
+    <p>Unix Time: {{ transaction.unix_time }}</p>
+    <p>Transaction Datetime: {{ transaction.trans_datetime }}</p>
+
+    <h2>Retrieved Data from Redis</h2>
+    <p>{{ retrieved_data }}</p>
+</body>
+</html>

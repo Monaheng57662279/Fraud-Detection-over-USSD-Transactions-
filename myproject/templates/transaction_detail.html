@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Home | Fraud Detection System
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+        p {
+            color: #555;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transaction Details</h1>
+    <p><strong>Total Transactions:</strong> {{ total_transactions }}</p>
+    <p><strong>Fraudulent Transactions:</strong> {{ fraud_count }}</p>
+    <p><strong>Fraud Percentage:</strong> {{ fraud_percentage }}%</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Contact Number</th>
+                <th>Merchant</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Unix Time</th>
+                <th>Transaction Date & Time</th>
+                <th>Is Fraud</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in page %}
+            <tr>
+                <td>{{ transaction.contact_num }}</td>
+                <td>{{ transaction.merchant }}</td>
+                <td>{{ transaction.category }}</td>
+                <td>M{{ transaction.amt }}</td>
+                <td>{{ transaction.unix_time }}</td>
+                <td>{{ transaction.trans_datetime }}</td>
+                <td>{% if transaction.is_fraud %}Fraudulent{% else %}Legitimate{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
+{% endblock %}

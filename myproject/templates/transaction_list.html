@@ -1,0 +1,43 @@
+{% load crispy_forms_tags %}
+
+
+
+
+{% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">Previous</a>
+{% endif %}
+
+{% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}">Next</a>
+{% endif %}
+
+<table>
+    <thead>
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/cerulean/bootstrap.min.css">
+        <tr>
+            <th>contact_num</th>
+            <th>Merchant Name</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Unix Time</th>
+            <th>Fraud Status</th>
+            <th>Date & Time</th>
+            
+            </tr>
+    </thead>
+    {{ transaction|crispy }}
+    <tbody>
+        {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.contact_num }}</td>
+                <td>{{ transaction.merchant }}</td>
+                <td>{{ transaction.category }}</td>
+                <td>{{ transaction.amt }}</td>
+                <td>{{ transaction.unix_time }}</td>
+                <td>{{ transaction.is_fraud }}</td>
+                <td>{{ transaction.trans_datetime }}</td>
+                </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>

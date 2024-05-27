@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <div id="prediction-container">Waiting for predictions...</div>
+
+    <script>
+        let socket = new WebSocket("ws://127.0.0.1:8000/predictions/");
+        socket.onmessage = function (e) {
+            let predictionData = JSON.parse(e.data);
+            document.getElementById("prediction-container").innerHTML = "Prediction: " + predictionData.prediction;
+        };
+    </script>
+</body>
+</html>

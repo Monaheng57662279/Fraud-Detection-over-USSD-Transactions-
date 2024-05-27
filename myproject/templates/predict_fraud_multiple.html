@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Fraud Detection Prediction - Multiple Transactions{% endblock %}
+{% block heading %}Multiple Transaction Prediction (CSV Upload){% endblock %}
+
+{% block content %}
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+
+<style>
+    /* Center the form vertically and horizontally */
+    .upload-container {
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center; /* Center the text within the form */
+    }
+
+    /* Style for the form and its elements */
+    .upload-form {
+        width: 80%; /* Adjust the width as needed */
+        max-width: 500px; /* Limit the maximum width */
+        padding: 20px;
+        background-color: #f8f8f8;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .upload-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .upload-form input[type="file"] {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Green button styling */
+    .upload-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745; /* Green background color */
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .upload-form button:hover {
+        background-color: #218838; /* Darker green when hovered */
+    }
+</style>
+
+<div class="upload-container">
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        {% csrf_token %}
+        {{ csv_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

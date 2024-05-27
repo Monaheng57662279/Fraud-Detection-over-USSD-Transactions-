@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+Home | Fraud Detection System
+{% endblock %}
+
+{% block css %}
+<link href="{% static 'assets/css/teststyle.css' %}" rel="stylesheet" />
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<main id="main">
+  <!-- ======= Hero Section ======= -->
+  <section id="homesection" style="padding: 0px 0px">
+    <!--__________________________________ header-box______________________________________________ -->
+    <div id="header-container">
+      <h1 id="header2">ALL TRANSACTIONS DATASET</h1>
+    </div>
+    <table id="example" class="table table-striped" style="width: 90%; margin: 1% 4%">
+      <thead style="background-color: brown; text-align: center">
+        <tr>
+          <th>Sr. No</th>
+          <th>File name</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center">
+        <tr>
+          <td>1</td>
+          <td>No files uploaded</td>
+          <td>N/A</td>
+          <td>
+            <a href="#" class="btn btn-primary">View Data</a>
+            <a href="#" class="btn btn-secondary">More</a>
+            <div class="dropdown" style="display: inline-block;">
+              <button class="btn btn-success dropdown-toggle" type="button" id="predictionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Prediction
+              </button>
+              <div class="dropdown-menu" aria-labelledby="predictionDropdown">
+                <a class="dropdown-item" href="{% url 'multiple_file' %}">Predict Multiple</a>
+                <a class="dropdown-item" href="{% url 'single_file' %}">User Input (Keyboard Input)</a>
+              </div>
+            </div>
+            <a href="{% url 'transaction_detail' %}" class="btn btn-danger">Analysis</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- End Hero -->
+</main>
+{% endblock %}

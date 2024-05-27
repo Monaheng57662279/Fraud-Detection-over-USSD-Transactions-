@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Home | Fraud Detection System
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fraud Prediction Results</title>
+    <style>
+        /* Overall page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid green; /* Green borders for th and td */
+        }
+
+        th {
+            background-color: #D6EEEE;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F3F7F7;
+        }
+
+        tr:hover {
+            background-color: #E7F2F2;
+        }
+
+        /* Prediction label styling */
+        .fraudulent {
+            color: red;
+        }
+
+        .legitimate {
+            color: green;
+        }
+
+        /* Pagination styling */
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .step-links {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .step-links a {
+            padding: 5px 10px;
+            background-color: #D6EEEE;
+            color: #555;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .step-links a:hover {
+            background-color: #B4D3D3;
+        }
+
+        .current {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fraud Prediction Results</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Merchant</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Unix Time</th>
+                <th>Transaction Date & Time</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction, prediction in page_obj %}
+            <tr>
+                <td>{{ transaction.contact_num }}</td>
+                <td>{{ transaction.merchant }}</td>
+                <td>{{ transaction.category }}</td>
+                <td>{{ transaction.amt }}</td>
+                <td>{{ transaction.unix_time }}</td>
+                <td>{{ transaction.trans_datetime }}</td>
+                <td class="{% if prediction == 1 %} fraudulent {% else %} legitimate {% endif %}">
+                    {% if prediction == 1 %} Fraudulent {% else %} Legitimate {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if page_obj.has_other_pages %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

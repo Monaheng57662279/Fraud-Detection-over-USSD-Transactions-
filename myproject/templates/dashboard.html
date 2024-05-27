@@ -1,0 +1,100 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+Home | Fraud Detection System
+{% endblock %}
+{% block css %}
+
+<link href="{% static 'assets/css/teststyle.css' %}" rel="stylesheet">
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+<style>
+  /* Your custom styles here */
+
+  /* Main content and footer layout */
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  /* Footer styles */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  /* Style for circles */
+  .circle {
+    border-end-end-radius: 50; /* Increase the radius to make circles bigger */
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<main id="main" >
+
+  <!-- ======= Hero Section ======= -->
+  <section id="homesection" style="padding: 0px 0px;">
+   <!--__________________________________ header-box______________________________________________ -->
+<div id="header-container">
+  <h1 id="header2">USER DASHBOARD</h1>
+</div>
+<!-- ___________________________________main-division____________________________________________ -->
+<div id="main-container">
+  <div class="inner-box">
+    <svg viewBox="0 0 80 200" width="200px" height="500px">
+      <a href="{% url 'multiple_file' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">Upload</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Files</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 200" width="200px" height="500px">
+      <a href="{% url 'reports' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">Files</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Report</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 200" width="200px" height="500px">
+      <a href="{% url 'logout' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">My</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Account</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 200" width="200px" height="500px">
+      <a href="{% url 'logout' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="35" font-size="10px" fill="#FFFFFF" text-anchor="middle">Change</text>
+        <text x="40" y="47" font-size="10px" fill="#FFFFFF" text-anchor="middle">Password</text></a>
+    </svg>
+  </div>
+
+  <div class="inner-box">
+    <svg viewBox="0 0 80 200" width="200px" height="500px">
+      <a href="{% url 'logout' %}">
+        <circle class="circle" cx="40" cy="40" r="38"/>
+        <text x="40" y="40" font-size="10px" fill="#FFFFFF" text-anchor="middle">Logout</text></a>
+    </svg>
+  </div>
+  
+</div>
+
+</section>
+
+  </main>
+
+{% endblock %}

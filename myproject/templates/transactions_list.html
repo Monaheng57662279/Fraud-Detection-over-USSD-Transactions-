@@ -1,0 +1,16 @@
+<!-- transactions_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-time Transactions</title>
+</head>
+<body>
+    <h1>Real-time Transactions</h1>
+    <ul>
+        {% for transaction in transactions %}
+        <li>{{ transaction.contact_num }} - {{ transaction.merchant }} - {{ transaction.amt }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

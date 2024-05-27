@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Transaction</title>
+</head>
+<body>
+    <h1>Create a New Transaction</h1>
+    <form method="post" action="{% url 'create_transaction' %}">
+        {% csrf_token %}
+        <label for="contact_num">Contact Number:</label>
+        <input type="text" id="contact_num" name="contact_num" required><br><br>
+
+        <label for="merchant">Merchant:</label>
+        <input type="text" id="merchant" name="merchant" required><br><br>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required><br><br>
+
+        <label for="amt">Amount:</label>
+        <input type="text" id="amt" name="amt" required><br><br>
+
+        <label for="unix_time">Unix Time:</label>
+        <input type="text" id="unix_time" name="unix_time" required><br><br>
+
+        <label for="trans_datetime">Transaction Datetime:</label>
+        <input type="text" id="trans_datetime" name="trans_datetime" required><br><br>
+
+        <input type="submit" value="Create Transaction">
+    </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fraudulent Transaction Alert</title>
+</head>
+<body>
+    <h2>Fraudulent Transaction Alert</h2>
+    <p>Below are the details of the fraudulent transaction:</p>
+    <table border="1">
+        <tr>
+            <th>Contact Number</th>
+            <th>Merchant</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date and Time</th>
+        </tr>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.contact_num }}</td>
+            <td>{{ transaction.merchant }}</td>
+            <td>{{ transaction.category }}</td>
+            <td>{{ transaction.amt }}</td>
+            <td>{{ transaction.trans_datetime }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
